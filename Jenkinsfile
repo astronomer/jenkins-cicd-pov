@@ -1,11 +1,7 @@
 pipeline {
     agent any
       stages {
-        stage('checkout'){
-            steps{
-                git branch: 'main', url: 'https://github.com/astronomer/jenkins-cicd-pov.git'
-            }
-        }
+        checkout([$class: 'GitSCM', branches: [[name: 'origin/main']], userRemoteConfigs: [[url: 'git@git.example.com:astronomer/jenkins-cicd-pov.git']]])
         stage('Dag Only Deploy to Astronomer') {
           when {
            expression {
@@ -19,9 +15,9 @@ pipeline {
                 files=($(git diff-tree HEAD --name-only --no-commit-id))
                 find="dags"
                 if [[ ${files[*]} =~ (^|[[:space:]])"$find"($|[[:space:]]) && ${#files[@]} -eq 1 ]]; then
-                  ./astro deploy --dags -f;
+                  ./astro deploy --dags;
                 else
-                  ./astro deploy -f;
+                  ./astro deploy;
                 fi
               '''
           }
