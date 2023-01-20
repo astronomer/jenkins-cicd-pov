@@ -14,7 +14,7 @@ pipeline {
           }
           steps {
               sh '''
-                curl -LJO https://github.com/astronomer/astro-cli/releases/download/v1.9.0/astro_1.9.0_linux_amd64.tar.gz'
+                curl -LJO https://github.com/astronomer/astro-cli/releases/download/v1.9.0/astro_1.9.0_linux_amd64.tar.gz
                 tar xzf astro_1.9.0_linux_amd64.tar.gz
                 files=($(git diff-tree HEAD --name-only --no-commit-id))
                 find="dags"
