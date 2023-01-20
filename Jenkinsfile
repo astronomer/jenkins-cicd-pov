@@ -9,7 +9,6 @@ pipeline {
           }
           steps {
               sh 'git clean -fdx'
-              checkout scm
               sh '''
                 curl -LJO https://github.com/astronomer/astro-cli/releases/download/v1.9.0/astro_1.9.0_linux_amd64.tar.gz
                 tar xzf astro_1.9.0_linux_amd64.tar.gz
