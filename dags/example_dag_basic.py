@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 
 from airflow.decorators import dag, task
 
-# adding this as a test comment for cicd
 @dag(
     schedule_interval="@daily",
     start_date=datetime(2021, 1, 1),
