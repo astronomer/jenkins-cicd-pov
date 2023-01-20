@@ -8,6 +8,7 @@ pipeline {
            }
           }
           steps {
+              sh 'git clean -fdx'
               checkout scm
               sh '''
                 curl -LJO https://github.com/astronomer/astro-cli/releases/download/v1.9.0/astro_1.9.0_linux_amd64.tar.gz
@@ -15,9 +16,9 @@ pipeline {
                 files=($(git diff-tree HEAD --name-only --no-commit-id))
                 find="dags"
                 if [[ ${files[*]} =~ (^|[[:space:]])"$find"($|[[:space:]]) && ${#files[@]} -eq 1 ]]; then
-                  ./astro deploy --dags;
+                  ./astro deploy --dags -f;
                 else
-                  ./astro deploy;
+                  ./astro deploy -f;
                 fi
               '''
           }
