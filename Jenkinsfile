@@ -1,6 +1,11 @@
 pipeline {
     agent any
       stages {
+        stage('checkout'){
+            steps{
+                git branch: 'main', url: 'https://github.com/astronomer/jenkins-cicd-pov.git'
+            }
+        }
         stage('Dag Only Deploy to Astronomer') {
           when {
            expression {
