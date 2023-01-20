@@ -17,7 +17,7 @@ pipeline {
             script {
               sh 'curl -LJO https://github.com/astronomer/astro-cli/releases/download/v1.9.0/astro_1.9.0_linux_amd64.tar.gz'
               sh 'tar xzf astro_1.9.0_linux_amd64.tar.gz'
-              sh "./astro deploy --dags"
+              sh "./astro deploy --dags -f"
             }
           }
         }
