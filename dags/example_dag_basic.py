@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from airflow.decorators import dag, task
 
 # add a test comment
+# add another test comment
 
 @dag(
     schedule_interval="@daily",
