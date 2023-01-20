@@ -16,9 +16,9 @@ pipeline {
                 files=($(git diff-tree HEAD --name-only --no-commit-id))
                 find="dags"
                 if [[ ${files[*]} =~ (^|[[:space:]])"$find"($|[[:space:]]) && ${#files[@]} -eq 1 ]]; then
-                  ./astro deploy --dags -f;
+                  ./astro deploy --dags;
                 else
-                  ./astro deploy -f;
+                  ./astro deploy;
                 fi
               '''
           }
