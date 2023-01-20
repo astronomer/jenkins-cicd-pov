@@ -1,7 +1,11 @@
 pipeline {
     agent any
       stages {
-        checkout([$class: 'GitSCM', branches: [[name: 'origin/main']], userRemoteConfigs: [[url: 'git@git.example.com:astronomer/jenkins-cicd-pov.git']]])
+        stage('Checkout code') {
+          steps {
+              checkout scm
+          }
+        }
         stage('Dag Only Deploy to Astronomer') {
           when {
            expression {
